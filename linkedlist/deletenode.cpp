@@ -56,7 +56,7 @@ class linkedlist{
               }
               size ++;
        }
-       int deleteathead(){
+       int  deleteathead(){
         if(size == 0) cout<<"invalid";
         else{
             head = head->next;
@@ -81,6 +81,23 @@ class linkedlist{
         size--;
      }
 
+     int  deleteatindex(int idx){
+             if(idx < 0 || idx>size)  {
+             cout<<"invalid";
+             return -1;
+             }
+             else if (idx == 0)   return deleteathead();
+             else if( idx  == size-1)  return deleteattail();
+             else{
+              node*temp = head;
+              for(int i=1; i<=idx-1; i++){
+                temp = temp->next;
+              }
+              temp->next = temp->next->next;
+              size--;
+             }
+     }
+
 };
 
 int main(){
@@ -98,6 +115,9 @@ int main(){
     ll.display();
 
     ll.deleteattail();
+    ll.display();
+
+    ll.deleteatindex(1);
     ll.display();
 
 }
